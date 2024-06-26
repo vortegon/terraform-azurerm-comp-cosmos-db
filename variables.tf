@@ -173,3 +173,14 @@ variable "free_tier_enabled" {
   type        = bool
   default     = false
 }
+
+variable "keyvault_id" {
+  description = "ID of the keyvault for key rotation."
+  type        = string
+}
+
+variable "key_validity_period_days" {
+  description = "Number of days when the key is rotated."
+  type        = string
+  default     = "90"
+}
