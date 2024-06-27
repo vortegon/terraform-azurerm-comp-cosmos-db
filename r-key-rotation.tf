@@ -1,8 +1,12 @@
+resource "time_offset" "expiration_date" {
+  offset_days = var.key_validity_period_days
+}
+
 resource "azurerm_key_vault_secret" "cosmosdb_secret_key" {
   name         = "cosmosdb-key-${var.resource_group_name}-${azurerm_cosmosdb_account.db.name}"
   value        = azurerm_cosmosdb_account.db.primary_key
   key_vault_id = var.keyvault_id
-
+  expiration_date = time_offset.expiration_date.rfc3339
   tags = {
     ProviderAddress = azurerm_cosmosdb_account.db.id
     CredentialId  = "Primary"

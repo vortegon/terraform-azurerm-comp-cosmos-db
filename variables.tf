@@ -181,6 +181,6 @@ variable "keyvault_id" {
 
 variable "key_validity_period_days" {
   description = "Number of days when the key is rotated."
-  type        = string
-  default     = "90"
+  type        = number
+  default     = 90
 }
